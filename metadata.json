@@ -1,0 +1,5 @@
+{
+  "name": "SheetBlog - CMS Spreadsheet",
+  "description": "Sebuah platform blog modern yang menggunakan Google Sheets sebagai database, dilengkapi dengan SEO otomatis, dark mode, dan performa tinggi.",
+  "requestFramePermissions": []
+}
