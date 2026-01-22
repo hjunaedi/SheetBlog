@@ -5,203 +5,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & Metadata -->
-    <title>SheetBlog - Modern CMS Spreadsheet</title>
-    <meta name="description" content="Platform blog modern bertenaga Google Sheets. Cepat, SEO-friendly, dan tanpa database SQL. Kelola konten Anda langsung dari spreadsheet.">
-    <meta name="keywords" content="CMS Spreadsheet, Blog Google Sheets, React CMS No-Build, Website Statis Cepat, SheetBlog">
-    <meta name="author" content="SheetBlog Studio">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://sheetblog.pages.dev/">
+    <!-- SEO & Metadata Pro -->
+    <title>SheetBlog Pro - Premium CMS Spreadsheet</title>
+    <meta name="description" content="Platform blog premium bertenaga Google Sheets dengan fitur TOC, Anti-Adblock, dan SEO High-Performance.">
+    <meta name="keywords" content="Premium CMS, Spreadsheet Blog, TOC Automatic, SEO Optimized, Anti Adblock">
+    <meta name="author" content="SheetBlog Pro Studio">
+    
+    <!-- Open Graph & Social Media -->
+    <meta property="og:site_name" content="SheetBlog Pro">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="SheetBlog Pro - Premium CMS Spreadsheet">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=1200">
+    
+    <!-- Favicon (Modern SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sheetblog.pages.dev/">
-    <meta property="og:title" content="SheetBlog - Modern CMS Spreadsheet">
-    <meta property="og:description" content="Kelola konten website Anda langsung dari Google Sheets. Solusi CMS tercepat dan termudah untuk pemula.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200">
-
-    <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="SheetBlog - Modern CMS Spreadsheet">
-    <meta property="twitter:description" content="Website otomatis dari Spreadsheet.">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200">
-
-    <!-- Favicon (Emoji 🚀) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "SheetBlog",
-      "url": "https://sheetblog.pages.dev/",
-      "description": "CMS Berbasis Spreadsheet No-Build"
-    }
-    </script>
-
-    <!-- Library CDN -->
+    <!-- Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
                     colors: {
-                        primary: {
-                            50: 'var(--primary-50)',
-                            100: 'var(--primary-100)',
-                            500: 'var(--primary-500)',
-                            600: 'var(--primary-600)',
-                            700: 'var(--primary-700)',
-                        }
+                        primary: { 50:'#f0f9ff', 100:'#e0f2fe', 500:'#0ea5e9', 600:'#0284c7', 700:'#0369a1' }
                     }
                 }
             }
         }
     </script>
     <style>
-        :root {
-            --primary-50: #f0f9ff;
-            --primary-100: #e0f2fe;
-            --primary-500: #0ea5e9;
-            --primary-600: #0284c7;
-            --primary-700: #0369a1;
-        }
-        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease; scroll-behavior: smooth; }
-        .prose h2 { scroll-margin-top: 100px; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        :root { --primary-50:#f0f9ff; --primary-100:#e0f2fe; --primary-500:#0ea5e9; --primary-600:#0284c7; --primary-700:#0369a1; }
+        body { transition: background-color 0.3s ease; scroll-behavior: smooth; }
+        .ad-placeholder { background: repeating-linear-gradient(45deg, #f8fafc, #f8fafc 10px, #f1f5f9 10px, #f1f5f9 20px); border: 1px dashed #cbd5e1; }
+        .dark .ad-placeholder { background: repeating-linear-gradient(45deg, #1e293b, #1e293b 10px, #0f172a 10px, #0f172a 20px); border-color: #334155; }
+        .sticky-widget { position: sticky; top: 100px; }
+        /* Anti Adblock Detect Bait */
+        .ads-banner { height: 1px; width: 1px; position: absolute; left: -1000px; top: -1000px; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen selection:bg-primary-500 selection:text-white">
     <div id="root"></div>
 
-    <!-- Logic Aplikasi React (Mandiri dalam HTML) -->
+    <!-- Script Utama -->
     <script type="text/babel" data-type="module">
-        import React, { useState, useEffect, useMemo } from 'https://esm.sh/react@19';
+        import React, { useState, useEffect, useMemo, useRef } from 'https://esm.sh/react@19';
         import ReactDOM from 'https://esm.sh/react-dom@19/client';
         import { HashRouter, Routes, Route, Link, useParams, Navigate, useLocation } from 'https://esm.sh/react-router-dom@7';
         import { marked } from 'https://esm.sh/marked@12';
 
         const DEFAULT_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRyPo15zAs0lpBImncFFCVRgQ7IdXFCdBI5DgPcdmjLWtLduIvW-bPHodS3BYlfL7pq_n0BCSB5YwCU/pub?gid=0&single=true&output=csv';
 
-        const COLOR_MAP = {
-            blue: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1' },
-            red: { 50: '#fef2f2', 100: '#fee2e2', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c' },
-            green: { 50: '#f0fdf4', 100: '#dcfce7', 500: '#22c55e', 600: '#16a34a', 700: '#15803d' },
-            purple: { 50: '#faf5ff', 100: '#f3e8ff', 500: '#a855f7', 600: '#9333ea', 700: '#7e22ce' },
-            orange: { 50: '#fff7ed', 100: '#ffedd5', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' }
+        // --- Utils ---
+        const parseCSV = (text) => {
+            const lines = text.split(/\r?\n/).filter(l => l.trim() !== "");
+            if (lines.length < 2) return [];
+            const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+            const keyMap = { 'Judul': 'judul', 'Label': 'label', 'Gambar': 'gambar', 'Body': 'body', 'Slug': 'slug', 'Status': 'status', 'Tipe': 'tipe', 'Meta Deskripsi': 'desc' };
+            
+            return lines.slice(1).map(line => {
+                // Simple CSV parser for quoted fields
+                const values = [];
+                let current = "";
+                let inQuotes = false;
+                for (let i = 0; i < line.length; i++) {
+                    const c = line[i];
+                    if (c === '"') inQuotes = !inQuotes;
+                    else if (c === ',' && !inQuotes) { values.push(current); current = ""; }
+                    else current += c;
+                }
+                values.push(current);
+                
+                const obj = {};
+                headers.forEach((h, i) => {
+                    const key = keyMap[h] || h.toLowerCase();
+                    obj[key] = (values[i] || '').replace(/"/g, '').trim();
+                });
+                return obj;
+            }).filter(p => p.status === 'Publish');
         };
 
-        function parseCSVLine(line) {
-            const result = [];
-            let curValue = "";
-            let inQuotes = false;
-            for (let i = 0; i < line.length; i++) {
-                const char = line[i];
-                if (char === '"') {
-                    if (inQuotes && line[i + 1] === '"') { curValue += '"'; i++; } 
-                    else { inQuotes = !inQuotes; }
-                } else if (char === ',' && !inQuotes) {
-                    result.push(curValue);
-                    curValue = "";
-                } else { curValue += char; }
-            }
-            result.push(curValue);
-            return result;
-        }
+        const extractTOC = (html) => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const headers = Array.from(doc.querySelectorAll('h2, h3'));
+            return headers.map((h, i) => {
+                const id = `heading-${i}`;
+                h.id = id;
+                return { id, text: h.innerText, level: h.tagName.toLowerCase() };
+            });
+        };
 
-        async function fetchSheetData() {
-            try {
-                const response = await fetch(`${DEFAULT_CSV_URL}&t=${new Date().getTime()}`);
-                const text = await response.text();
-                const lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
-                if (lines.length === 0) return [];
-                const headers = parseCSVLine(lines[0]).map(h => h.trim());
-                const keyMap = { 'Judul': 'judul', 'Label': 'label', 'Gambar': 'gambar', 'Body': 'body', 'Slug': 'slug', 'Status': 'status', 'Tipe': 'tipe' };
-                return lines.slice(1).map(line => {
-                    const values = parseCSVLine(line);
-                    const obj = {};
-                    headers.forEach((header, index) => {
-                        const key = keyMap[header] || header;
-                        obj[key] = (values[index] || '').trim();
-                    });
-                    return obj;
-                }).filter(p => p.status === 'Publish');
-            } catch (e) { return []; }
-        }
+        // --- Components ---
 
-        const Header = ({ darkMode, setDarkMode, themeColor, setThemeColor }) => {
-            const [isThemeOpen, setIsThemeOpen] = useState(false);
+        const AntiAdblock = () => {
+            const [isBlocked, setIsBlocked] = useState(false);
+            useEffect(() => {
+                const check = () => {
+                    const bait = document.createElement('div');
+                    bait.className = 'ads-banner ads-google ad-unit';
+                    document.body.appendChild(bait);
+                    if (bait.offsetHeight === 0) setIsBlocked(true);
+                    document.body.removeChild(bait);
+                };
+                setTimeout(check, 2000);
+            }, []);
+
+            if (!isBlocked) return null;
             return (
-                <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-                    <div className="container mx-auto px-4 flex items-center justify-between h-16">
-                        <Link to="/" className="text-2xl font-black bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">SheetBlog</Link>
-                        <div className="flex items-center space-x-4">
-                            <Link to="/about" className="text-sm font-bold hover:text-primary-500 transition hidden sm:block">Tentang</Link>
-                            <button onClick={() => setIsThemeOpen(!isThemeOpen)} className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 border dark:border-slate-700">
-                                <i className="fas fa-palette"></i>
-                            </button>
-                            <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 border dark:border-slate-700">
-                                <i className={`fas ${darkMode ? 'fa-sun text-yellow-500' : 'fa-moon'}`}></i>
-                            </button>
+                <div className="fixed inset-0 z-[999] bg-black/80 backdrop-blur flex items-center justify-center p-4 animate-in fade-in duration-500">
+                    <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md text-center shadow-2xl border border-red-100 dark:border-red-900/30">
+                        <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i className="fas fa-shield-halved text-3xl"></i>
                         </div>
-                        {isThemeOpen && (
-                            <div className="absolute right-4 top-16 p-3 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-2xl shadow-2xl flex gap-2 z-[100]">
-                                {Object.keys(COLOR_MAP).map(c => (
-                                    <button key={c} onClick={() => {setThemeColor(c); setIsThemeOpen(false);}} className="w-8 h-8 rounded-full" style={{backgroundColor: COLOR_MAP[c][500]}} />
-                                ))}
-                            </div>
-                        )}
+                        <h2 className="text-2xl font-black mb-4">AdBlock Terdeteksi!</h2>
+                        <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">Mohon nonaktifkan AdBlock untuk mendukung keberlanjutan konten kami. Kami tidak menggunakan iklan yang mengganggu.</p>
+                        <button onClick={() => window.location.reload()} className="w-full py-4 bg-primary-600 text-white rounded-2xl font-bold hover:bg-primary-700 transition">Selesai & Muat Ulang</button>
                     </div>
-                </header>
+                </div>
             );
         };
 
-        const Home = ({ posts }) => (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
-                {posts.filter(p => p.tipe === 'Post').map((post, i) => (
-                    <article key={i} className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm border dark:border-slate-700 flex flex-col h-full hover:shadow-xl transition">
-                        <Link to={`/post/${post.slug}`} className="aspect-video overflow-hidden">
-                            <img src={post.gambar} alt={post.judul} className="w-full h-full object-cover" />
-                        </Link>
-                        <div className="p-6 flex flex-col flex-grow">
-                            <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-2">{post.label}</span>
-                            <h2 className="text-xl font-bold mb-4 line-clamp-2">{post.judul}</h2>
-                            <Link to={`/post/${post.slug}`} className="mt-auto text-sm font-black text-primary-600 uppercase tracking-widest">Baca Selengkapnya</Link>
-                        </div>
-                    </article>
-                ))}
-            </div>
+        const Breadcrumbs = ({ title }) => (
+            <nav className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-8 overflow-hidden whitespace-nowrap">
+                <Link to="/" className="hover:text-primary-500 transition">Beranda</Link>
+                <i className="fas fa-chevron-right text-[8px]"></i>
+                <span className="text-slate-300 dark:text-slate-600">Post</span>
+                <i className="fas fa-chevron-right text-[8px]"></i>
+                <span className="text-primary-500 truncate">{title}</span>
+            </nav>
         );
+
+        const BookmarkBtn = ({ slug, title }) => {
+            const [isBookmarked, setIsBookmarked] = useState(false);
+            useEffect(() => {
+                const bookmarks = JSON.parse(localStorage.getItem('sb_bookmarks') || '[]');
+                setIsBookmarked(bookmarks.some(b => b.slug === slug));
+            }, [slug]);
+
+            const toggle = () => {
+                let bookmarks = JSON.parse(localStorage.getItem('sb_bookmarks') || '[]');
+                if (isBookmarked) {
+                    bookmarks = bookmarks.filter(b => b.slug !== slug);
+                } else {
+                    bookmarks.push({ slug, title, date: new Date().toLocaleDateString() });
+                }
+                localStorage.setItem('sb_bookmarks', JSON.stringify(bookmarks));
+                setIsBookmarked(!isBookmarked);
+            };
+
+            return (
+                <button onClick={toggle} className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isBookmarked ? 'bg-primary-500 border-primary-500 text-white' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-500 text-slate-500'}`}>
+                    <i className={`${isBookmarked ? 'fas' : 'far'} fa-bookmark`}></i>
+                    <span className="text-xs font-bold uppercase tracking-widest">{isBookmarked ? 'Tersimpan' : 'Simpan'}</span>
+                </button>
+            );
+        };
+
+        const TOC = ({ items }) => {
+            if (!items || items.length === 0) return null;
+            return (
+                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-6 border dark:border-slate-700 mb-10">
+                    <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4 flex items-center gap-2">
+                        <i className="fas fa-list-ul text-primary-500"></i> Daftar Isi
+                    </h4>
+                    <ul className="space-y-3">
+                        {items.map(item => (
+                            <li key={item.id} className={`${item.level === 'h3' ? 'ml-6' : ''}`}>
+                                <a href={`#${item.id}`} className="text-sm font-medium hover:text-primary-500 transition line-clamp-1">{item.text}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
 
         const PostDetail = ({ posts }) => {
             const { slug } = useParams();
             const [content, setContent] = useState('');
-            const isLocal = slug === 'about' || slug === 'guide_stup';
+            const [toc, setToc] = useState([]);
+            const [currentPage, setCurrentPage] = useState(0);
             const post = posts.find(p => p.slug === slug);
+            const isLocal = !post && (slug === 'about' || slug === 'guide_stup');
 
             useEffect(() => {
-                window.scrollTo(0,0);
+                window.scrollTo(0, 0);
                 if (isLocal) {
-                    fetch(`./${slug}.md`).then(r => r.text()).then(t => setContent(marked.parse(t)));
+                    fetch(`./${slug}.md`).then(r => r.text()).then(t => {
+                        const html = marked.parse(t);
+                        setContent(html);
+                        setToc(extractTOC(html));
+                    });
+                } else if (post) {
+                    setToc(extractTOC(post.body));
+                    // Content splitting logic
+                    const pages = post.body.split('<!--nextpage-->');
+                    setContent(pages[currentPage] || post.body);
                 }
-            }, [slug, isLocal]);
+            }, [slug, isLocal, post, currentPage]);
 
-            if (!post && !isLocal) return <div className="py-20 text-center">Data tidak ditemukan.</div>;
+            if (!post && !isLocal) return <div className="py-40 text-center font-black">404 - Halaman Hilang di Awan</div>;
+
+            const related = posts.filter(p => p.tipe === 'Post' && p.slug !== slug && (p.label === post?.label)).slice(0, 3);
+            const currentIndex = posts.findIndex(p => p.slug === slug);
+            const prevPost = posts[currentIndex - 1];
+            const nextPost = posts[currentIndex + 1];
 
             return (
-                <div className="max-w-4xl mx-auto py-10 px-4">
-                    <h1 className="text-4xl md:text-6xl font-black mb-10 text-center">{isLocal ? (slug === 'about' ? 'Tentang' : 'Panduan') : post.judul}</h1>
-                    <img src={isLocal ? 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97' : post.gambar} className="w-full aspect-video object-cover rounded-[2.5rem] mb-12 shadow-xl" />
-                    <div className="prose prose-lg dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: isLocal ? content : post.body }} />
+                <div className="max-w-6xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
+                    {/* Content Area */}
+                    <article className="flex-grow max-w-4xl">
+                        <Breadcrumbs title={post?.judul || slug} />
+                        <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter uppercase">{post?.judul || slug}</h1>
+                        
+                        <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
+                            <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full">{post?.label || 'INFO'}</span>
+                                <span><i className="far fa-clock mr-2"></i> 5 Min Baca</span>
+                            </div>
+                            <BookmarkBtn slug={slug} title={post?.judul || slug} />
+                        </div>
+
+                        <img src={post?.gambar || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643'} className="w-full aspect-[21/9] object-cover rounded-[2.5rem] shadow-2xl mb-12" alt="Cover" />
+                        
+                        <TOC items={toc} />
+
+                        {/* Middle Ad Placeholder */}
+                        <div className="ad-placeholder h-32 w-full rounded-3xl mb-10 flex items-center justify-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                            Space Iklan Tengah Artikel
+                        </div>
+
+                        <div className="prose prose-lg prose-slate dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
+
+                        {/* Pagination Konten */}
+                        {post?.body.includes('<!--nextpage-->') && (
+                            <div className="flex justify-center gap-2 mt-12">
+                                {post.body.split('<!--nextpage-->').map((_, i) => (
+                                    <button key={i} onClick={() => setCurrentPage(i)} className={`w-10 h-10 rounded-xl font-bold transition ${currentPage === i ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200'}`}>{i + 1}</button>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Next Prev Nav */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-20 border-t dark:border-slate-800 pt-10">
+                            {prevPost && (
+                                <Link to={`/post/${prevPost.slug}`} className="group p-6 bg-white dark:bg-slate-800 rounded-3xl border dark:border-slate-700 hover:shadow-lg transition">
+                                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Sebelumnya</span>
+                                    <span className="font-bold group-hover:text-primary-500 transition">{prevPost.judul}</span>
+                                </Link>
+                            )}
+                            {nextPost && (
+                                <Link to={`/post/${nextPost.slug}`} className="group p-6 bg-white dark:bg-slate-800 rounded-3xl border dark:border-slate-700 hover:shadow-lg transition text-right">
+                                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-2">Berikutnya</span>
+                                    <span className="font-bold group-hover:text-primary-500 transition">{nextPost.judul}</span>
+                                </Link>
+                            )}
+                        </div>
+
+                        {/* Related Posts */}
+                        {related.length > 0 && (
+                            <div className="mt-20">
+                                <h3 className="text-xl font-black uppercase tracking-widest mb-8 flex items-center gap-4">
+                                    Mungkin Anda Suka <div className="h-px bg-slate-200 dark:bg-slate-800 flex-grow"></div>
+                                </h3>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    {related.map(r => (
+                                        <Link key={r.slug} to={`/post/${r.slug}`} className="group">
+                                            <div className="aspect-video rounded-2xl overflow-hidden mb-4 shadow-sm">
+                                                <img src={r.gambar} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt={r.judul} />
+                                            </div>
+                                            <h4 className="font-bold text-sm leading-tight group-hover:text-primary-500 transition line-clamp-2">{r.judul}</h4>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </article>
+
+                    {/* Sidebar Sticky */}
+                    <aside className="lg:w-80 flex-shrink-0">
+                        <div className="sticky-widget space-y-8">
+                            <div className="p-6 bg-primary-600 rounded-3xl text-white shadow-xl shadow-primary-500/20">
+                                <h4 className="text-lg font-black mb-2 uppercase italic">Newsletter</h4>
+                                <p className="text-xs text-primary-100 mb-6 font-medium">Jangan ketinggalan info menarik setiap harinya!</p>
+                                <input type="email" placeholder="Email Anda..." className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl mb-3 text-sm placeholder:text-white/50 outline-none" />
+                                <button className="w-full py-3 bg-white text-primary-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-50 transition">Langganan</button>
+                            </div>
+                            
+                            <div className="ad-placeholder h-64 rounded-3xl flex items-center justify-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                                Iklan Sidebar
+                            </div>
+
+                            <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl border dark:border-slate-700">
+                                <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Label Populer</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Teknologi', 'Gaya Hidup', 'Tutorial', 'Bisnis'].map(l => (
+                                        <span key={l} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-xs font-bold rounded-lg cursor-pointer hover:bg-primary-500 hover:text-white transition">{l}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            );
+        };
+
+        const Home = ({ posts }) => {
+            const [page, setPage] = useState(1);
+            const perPage = 6;
+            const blogPosts = useMemo(() => posts.filter(p => p.tipe === 'Post'), [posts]);
+            const totalPages = Math.ceil(blogPosts.length / perPage);
+            const displayPosts = blogPosts.slice(0, page * perPage);
+
+            return (
+                <div className="py-12">
+                    <header className="text-center max-w-3xl mx-auto mb-20 space-y-6">
+                        <div className="inline-block px-4 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-500 text-[10px] font-black uppercase tracking-[0.3em] rounded-full">Explore Articles</div>
+                        <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none">The Future of <span className="italic text-primary-600">Spreadsheet</span> Blog</h1>
+                        <p className="text-slate-500 dark:text-slate-400 font-medium">Kombinasi sempurna antara kemudahan data dan performa visual kelas atas.</p>
+                    </header>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {displayPosts.map((post, i) => (
+                            <article key={i} className="group bg-white dark:bg-slate-800 rounded-[2.5rem] overflow-hidden shadow-sm border dark:border-slate-700 flex flex-col h-full hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                                <Link to={`/post/${post.slug}`} className="aspect-[4/3] overflow-hidden relative">
+                                    <img src={post.gambar} alt={post.judul} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                                    <div className="absolute top-4 left-4 px-3 py-1 bg-white/80 backdrop-blur rounded-full text-[10px] font-black uppercase tracking-widest">{post.label}</div>
+                                </Link>
+                                <div className="p-8 flex flex-col flex-grow">
+                                    <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight group-hover:text-primary-500 transition">{post.judul}</h2>
+                                    <p className="text-slate-500 dark:text-slate-400 text-sm line-clamp-3 mb-8 flex-grow">{post.desc}</p>
+                                    <Link to={`/post/${post.slug}`} className="flex items-center gap-4 text-xs font-black text-primary-600 uppercase tracking-widest">
+                                        Selengkapnya <div className="h-px bg-primary-200 dark:bg-primary-900 flex-grow"></div> <i className="fas fa-arrow-right-long"></i>
+                                    </Link>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+
+                    {page < totalPages && (
+                        <div className="mt-20 text-center">
+                            <button onClick={() => setPage(p => p + 1)} className="px-10 py-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl font-black uppercase tracking-widest hover:border-primary-500 hover:text-primary-500 transition-all">Muat Lebih Banyak Artikel</button>
+                        </div>
+                    )}
                 </div>
             );
         };
@@ -211,9 +362,13 @@
             const [loading, setLoading] = useState(true);
             const [darkMode, setDarkMode] = useState(localStorage.theme === 'dark');
             const [themeColor, setThemeColor] = useState(localStorage.themeColor || 'blue');
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
 
             useEffect(() => {
-                fetchSheetData().then(d => { setPosts(d); setLoading(false); });
+                fetch(`${DEFAULT_CSV_URL}&t=${Date.now()}`).then(r => r.text()).then(t => {
+                    setPosts(parseCSV(t));
+                    setLoading(false);
+                });
             }, []);
 
             useEffect(() => {
@@ -221,27 +376,95 @@
                 localStorage.theme = darkMode ? 'dark' : 'light';
             }, [darkMode]);
 
-            useEffect(() => {
-                const p = COLOR_MAP[themeColor];
-                const r = document.documentElement;
-                Object.keys(p).forEach(k => r.style.setProperty(`--primary-${k}`, p[k]));
-                localStorage.themeColor = themeColor;
-            }, [themeColor]);
-
-            if (loading) return <div className="h-screen flex items-center justify-center font-black uppercase tracking-[0.5em] text-primary-500 animate-pulse">SheetBlog Loading...</div>;
+            if (loading) return (
+                <div className="h-screen flex flex-col items-center justify-center gap-8 bg-slate-50 dark:bg-slate-900">
+                    <div className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="text-xs font-black uppercase tracking-[1em] text-primary-500 animate-pulse">Initializing Engine...</div>
+                </div>
+            );
 
             return (
                 <HashRouter>
-                    <Header darkMode={darkMode} setDarkMode={setDarkMode} themeColor={themeColor} setThemeColor={setThemeColor} />
+                    <AntiAdblock />
+                    
+                    {/* Header Premium */}
+                    <header className="sticky top-0 z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800">
+                        <div className="container mx-auto px-4 flex items-center justify-between h-20">
+                            <div className="flex items-center gap-12">
+                                <Link to="/" className="text-2xl font-black italic tracking-tighter flex items-center gap-2">
+                                    <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white text-sm not-italic">S</div>
+                                    SheetBlog<span className="text-primary-600">Pro.</span>
+                                </Link>
+                                <nav className="hidden md:flex items-center space-x-8 text-xs font-black uppercase tracking-widest text-slate-500">
+                                    <Link to="/" className="hover:text-primary-500 transition">Beranda</Link>
+                                    <Link to="/about" className="hover:text-primary-500 transition">Tentang Kami</Link>
+                                    <Link to="/guide_stup" className="hover:text-primary-500 transition">Instalasi</Link>
+                                </nav>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <button onClick={() => setDarkMode(!darkMode)} className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 transition-all hover:scale-110 active:scale-95">
+                                    <i className={`fas ${darkMode ? 'fa-sun text-yellow-500' : 'fa-moon'}`}></i>
+                                </button>
+                                <button onClick={() => setIsMenuOpen(true)} className="md:hidden w-10 h-10 rounded-xl bg-primary-600 text-white flex items-center justify-center">
+                                    <i className="fas fa-bars-staggered"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Mobile Drawer */}
+                    {isMenuOpen && (
+                        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm md:hidden animate-in fade-in duration-300">
+                            <div className="absolute right-0 top-0 h-full w-80 bg-white dark:bg-slate-900 p-8 shadow-2xl animate-in slide-in-from-right duration-300">
+                                <div className="flex justify-between items-center mb-12">
+                                    <span className="font-black uppercase tracking-widest text-primary-500 text-sm">Main Menu</span>
+                                    <button onClick={() => setIsMenuOpen(false)} className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500"><i className="fas fa-xmark"></i></button>
+                                </div>
+                                <div className="flex flex-col space-y-6 text-xl font-black uppercase tracking-tighter">
+                                    <Link to="/" onClick={() => setIsMenuOpen(false)} className="hover:text-primary-600">Beranda</Link>
+                                    <Link to="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-primary-600">Tentang Kami</Link>
+                                    <Link to="/guide_stup" onClick={() => setIsMenuOpen(false)} className="hover:text-primary-600">Instalasi</Link>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     <main className="container mx-auto px-4 min-h-screen">
                         <Routes>
                             <Route path="/" element={<Home posts={posts} />} />
                             <Route path="/post/:slug" element={<PostDetail posts={posts} />} />
                             <Route path="/:slug" element={<PostDetail posts={posts} />} />
+                            <Route path="*" element={<Navigate to="/" />} />
                         </Routes>
                     </main>
-                    <footer className="py-10 border-t text-center text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                        &copy; {new Date().getFullYear()} SheetBlog Studio. All In One HTML.
+
+                    {/* Footer Premium */}
+                    <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-20 mt-20">
+                        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+                            <div className="md:col-span-2">
+                                <Link to="/" className="text-3xl font-black italic tracking-tighter block mb-6 uppercase">SheetBlog<span className="text-primary-600">.</span></Link>
+                                <p className="text-slate-500 dark:text-slate-400 max-w-sm font-medium leading-relaxed">Website blog modern paling ringan di dunia yang menggunakan Spreadsheet sebagai pusat datanya. Tanpa maintenance, tanpa pusing.</p>
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary-500">Navigasi</h4>
+                                <ul className="space-y-4 text-sm font-bold text-slate-400">
+                                    <li><Link to="/" className="hover:text-primary-500">Beranda</Link></li>
+                                    <li><Link to="/about" className="hover:text-primary-500">Tentang Kami</Link></li>
+                                    <li><Link to="/guide_stup" className="hover:text-primary-500">Panduan Setup</Link></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary-500">Ikuti Kami</h4>
+                                <div className="flex gap-4">
+                                    {[ 'twitter', 'github', 'instagram' ].map(s => (
+                                        <a key={s} href="#" className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:bg-primary-500 hover:text-white transition-all"><i className={`fab fa-${s}`}></i></a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="container mx-auto px-4 mt-20 pt-10 border-t dark:border-slate-900 text-center text-[10px] font-black uppercase tracking-[0.5em] text-slate-500">
+                            &copy; {new Date().getFullYear()} SheetBlog Studio Premium Template. Built for Performance.
+                        </div>
                     </footer>
                 </HashRouter>
             );
